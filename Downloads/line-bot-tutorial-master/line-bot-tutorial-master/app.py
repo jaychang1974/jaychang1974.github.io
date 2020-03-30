@@ -33,8 +33,12 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text='Hello World')
-    line_bot_api.reply_message(event.reply_token, message)
+    if (event.message.text='1'):
+      message = TextSendMessage(text='地點1')
+      line_bot_api.reply_message(event.reply_token, message)
+    else:    
+      message = TextSendMessage(text=event.message.text)
+      line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
